@@ -24,14 +24,20 @@ class MyClient(discord.Bot):
     async def on_message(self, message):
         if len(self.spam_text):
             if self.spam_text.count((message.author, message.content)) > 3:
-                await message.channel.send("I said no spamming {message.author.mention}")
+                await message.channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
+                await message.channel.send(f"I said no spamming {message.author.mention}")
+                
+                # In order to test the antispam
+                mod_role = discord.utils.find(lambda r: r.name == 'Member', message.guild.roles)
+                if mod_role in message.author.roles:
+                    return
                 await message.guild.ban(message.author, reason="Caught spamming by helpful horse")
                 
             if self.spam_text.count((message.author, message.content)):
                 await message.channel.send(f"No spamming {message.author.mention}")
         self.spam_text.append((message.author, message.content)) # append the author and message
         
-    @tasks.loop(hours=24)
+    @tasks.loop(minutes=10)
     async def reset_spam_text(self):
         self.spam_text = []
         
