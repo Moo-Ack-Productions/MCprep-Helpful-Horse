@@ -2,6 +2,8 @@ import discord
 from discord.ext import tasks
 import json
 
+MCPREP_GUILD_ID = 737871405349339232
+
 class MyClient(discord.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -39,15 +41,15 @@ class MyClient(discord.Bot):
 
 client = MyClient()
 
-@client.slash_command(name="mcprep")
+@client.slash_command(name="mcprep", guilds=[MCPREP_GUILD_ID])
 async def mcprep_download(ctx):
     await ctx.respond("MCprep can be downloaded here: https://github.com/TheDuckCow/MCprep/releases")
     
-@client.slash_command(name="blender")
+@client.slash_command(name="blender", guilds=[MCPREP_GUILD_ID])
 async def blender_download(ctx):
     await ctx.respond("Blender can be downloaded here: https://www.blender.org/")
     
-@client.slash_command(name="assets")
+@client.slash_command(name="assets", guilds=[MCPREP_GUILD_ID])
 async def asset_submission(ctx):
     await ctx.respond("You can submit mob rigs here: https://github.com/TheDuckCow/MCprep/issues/245")
 
