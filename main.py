@@ -41,15 +41,15 @@ class MyClient(discord.Bot):
 
 client = MyClient()
 
-@client.slash_command(name="mcprep download", guilds=[MCPREP_GUILD_ID])
+@client.slash_command(name="mcprep_download", guilds=[MCPREP_GUILD_ID])
 async def mcprep_download(ctx):
     await ctx.respond("MCprep can be downloaded here: https://github.com/TheDuckCow/MCprep/releases")
     
-@client.slash_command(name="blender download", guilds=[MCPREP_GUILD_ID])
+@client.slash_command(name="blender_download", guilds=[MCPREP_GUILD_ID])
 async def blender_download(ctx):
     await ctx.respond("Blender can be downloaded here: https://www.blender.org/")
     
-@client.slash_command(name="where do i submit assets", guilds=[MCPREP_GUILD_ID])
+@client.slash_command(name="where_do_i_submit_assets", guilds=[MCPREP_GUILD_ID])
 async def asset_submission(ctx):
     await ctx.respond("You can submit mob rigs here: https://github.com/TheDuckCow/MCprep/issues/245")
 
