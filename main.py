@@ -26,7 +26,7 @@ class MyClient(discord.Bot):
             return
         
         if len(self.spam_text):
-            if self.spam_text.count((message.author, message.content)) > 3:
+            if self.spam_text.count((message.author, message.content)) >= 3:
                 await message.channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
                 await message.channel.send(f"I said no spamming {message.author.mention}")
                 
@@ -36,7 +36,7 @@ class MyClient(discord.Bot):
                     return
                 await message.guild.ban(message.author, reason="Caught spamming by helpful horse")
                 
-            if self.spam_text.count((message.author, message.content)):
+            if self.spam_text.count((message.author, message.content)) == 1:
                 await message.channel.send(f"No spamming {message.author.mention}")
         self.spam_text.append((message.author, message.content)) # append the author and message
         
