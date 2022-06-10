@@ -28,7 +28,7 @@ class MyClient(discord.Bot):
                 await message.channel.send(f"I said no spamming {message.author.mention}")
                 
                 # In order to test the antispam
-                mod_role = discord.utils.find(lambda r: r.name == 'Member', message.guild.roles)
+                mod_role = discord.utils.find(lambda r: r.name == 'Moderators', message.guild.roles)
                 if mod_role in message.author.roles:
                     return
                 await message.guild.ban(message.author, reason="Caught spamming by helpful horse")
