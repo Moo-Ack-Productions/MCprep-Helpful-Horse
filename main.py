@@ -22,7 +22,7 @@ class MyClient(discord.Bot):
         print(f'Logged on as {self.user}!')
 
     async def on_message(self, message):
-        if message.author.id == self.user.id:
+        if message.author.bot:
             return
         
         if len(self.spam_text):
