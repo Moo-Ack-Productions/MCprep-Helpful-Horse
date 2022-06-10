@@ -21,7 +21,7 @@ class MyClient(discord.Client):
             if message.content == self.spam_text:
                 message.channel.send("no spamming!")
         self.spam_text = message.content
-        asyncio.sleep(100)
+        await asyncio.sleep(100)
         self.spam_text = None
 
 if __name__ == "__main__":
