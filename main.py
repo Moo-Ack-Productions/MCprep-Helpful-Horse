@@ -22,6 +22,9 @@ class MyClient(discord.Bot):
         print(f'Logged on as {self.user}!')
 
     async def on_message(self, message):
+        if message.author.id == self.user.id:
+            return
+        
         if len(self.spam_text):
             if self.spam_text.count((message.author, message.content)) > 3:
                 await message.channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
