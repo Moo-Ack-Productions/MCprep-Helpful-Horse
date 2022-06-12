@@ -35,15 +35,14 @@ class MyClient(discord.Bot):
         
         if len(self.spam_text):
             if self.spam_text.count((message.author, message.content)) >= 3:
-                await message.channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
+                for channel in message.guild.channels:
+                    await channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
                 await message.channel.send(f"I said no spamming {message.author.mention}")
                 await message.author.timeout_for(duration=datetime.timedelta(hours=5), reason="Spamming")
                 
                 if message.guild.id == MCPREP_GUILD_ID:
                     await self.staff_chat.send(f"{message.author} spammed this message \"{message.content}\"")
                 
-                for channel in message.guild.channels:
-                    await channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
                     
             if self.spam_text.count((message.author, message.content)) == 1:
                 await message.channel.send(f"No spamming {message.author.mention}")
