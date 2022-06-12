@@ -3,7 +3,9 @@ from discord.ext import tasks
 import json
 import datetime
 
-MCPREP_GUILD_ID = 737871405349339232
+MCPREP_GUILD_ID       = 737871405349339232
+IDLE_MINER_CHANNEL_ID = 746745594458144809
+STAFF_CHAT_ID         = 741151005688987769
 
 class MyClient(discord.Bot):
     def __init__(self, *args, **kwargs):
@@ -19,24 +21,30 @@ class MyClient(discord.Bot):
         self.spam_text = []
         self.reset_spam_text.start()
         
+        self.staff_chat = self.get_channel(STAFF_CHAT_ID)
+        
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
 
-    async def on_message(self, message):
+    async def on_message(self, message: discord.Message):
         if message.author.bot:
+            return
+        
+        elif message.channel.id == IDLE_MINER_CHANNEL_ID:
             return
         
         if len(self.spam_text):
             if self.spam_text.count((message.author, message.content)) >= 3:
                 await message.channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
                 await message.channel.send(f"I said no spamming {message.author.mention}")
-                
-                # In order to test the antispam
-                mod_role = discord.utils.find(lambda r: r.name == 'Moderators', message.guild.roles)
-                if mod_role in message.author.roles:
-                    return
                 await message.author.timeout_for(duration=datetime.timedelta(hours=5), reason="Spamming")
                 
+                if message.guild.id == MCPREP_GUILD_ID:
+                    await self.staff_chat.send(f"{message.author} spammed this message \"{message.content}\"")
+                
+                for channel in message.guild.channels:
+                    await channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
+                    
             if self.spam_text.count((message.author, message.content)) == 1:
                 await message.channel.send(f"No spamming {message.author.mention}")
         self.spam_text.append((message.author, message.content)) # append the author and message
