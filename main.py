@@ -37,7 +37,10 @@ class MyClient(discord.Bot):
             if self.spam_text.count((message.author, message.content)) >= 3:
                 for channel in message.guild.channels:
                     if isinstance(channel, discord.TextChannel):
-                        await channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
+                        try:
+                            await channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
+                        except Exception:
+                            continue
                 await message.channel.send(f"I said no spamming {message.author.mention}")
                 await message.author.timeout_for(duration=datetime.timedelta(hours=5), reason="Spamming")
                 
