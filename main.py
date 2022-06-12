@@ -1,6 +1,7 @@
 import discord
 from discord.ext import tasks
 import json
+import datetime
 
 MCPREP_GUILD_ID = 737871405349339232
 
@@ -34,13 +35,13 @@ class MyClient(discord.Bot):
                 mod_role = discord.utils.find(lambda r: r.name == 'Moderators', message.guild.roles)
                 if mod_role in message.author.roles:
                     return
-                await message.guild.ban(message.author, reason="Caught spamming by helpful horse")
+                await message.author.timeout_for(duration=datetime.timedelta(hours=5), reason="Spamming")
                 
             if self.spam_text.count((message.author, message.content)) == 1:
                 await message.channel.send(f"No spamming {message.author.mention}")
         self.spam_text.append((message.author, message.content)) # append the author and message
         
-    @tasks.loop(minutes=10)
+    @tasks.loop(minutes=5)
     async def reset_spam_text(self):
         self.spam_text = []
         
