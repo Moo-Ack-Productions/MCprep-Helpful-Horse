@@ -5,7 +5,7 @@
     
     1a. Make sure the bot is able to timeout other users and setup commands
 
-2. Create a file called config.json and add the following:
+2. Create a file called `config.json` and add the following:
 ```json
 {
     "token" : "TOKEN HERE"
