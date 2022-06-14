@@ -7,6 +7,9 @@ MCPREP_GUILD_ID       = 737871405349339232
 IDLE_MINER_CHANNEL_ID = 746745594458144809
 STAFF_CHAT_ID         = 741151005688987769
 
+HTTPS = "https://"
+HTTP  = "http://"
+
 class MyClient(discord.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -47,10 +50,12 @@ class MyClient(discord.Bot):
                 if message.guild.id == MCPREP_GUILD_ID:
                     await self.staff_chat.send(f"{message.author} spammed this message \"{message.content}\"")
                 
-                    
+                
             if self.spam_text.count((message.author, message.content)) == 1:
                 await message.channel.send(f"No spamming {message.author.mention}")
-        self.spam_text.append((message.author, message.content)) # append the author and message
+                
+        if HTTPS in message.content or HTTP in message.content:
+            self.spam_text.append((message.author, message.content)) # append the author and message
         
     @tasks.loop(minutes=5)
     async def reset_spam_text(self):
