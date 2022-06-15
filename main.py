@@ -57,8 +57,10 @@ class MyClient(discord.Bot):
                 await message.channel.send(f"No spamming {message.author.mention}")
                 
         if HTTPS in message.content or HTTP in message.content:
-            if DISCORD_HTTPS not in message.content:
-                self.spam_text.append((message.author, message.content)) # append the author and message
+            for i in DISCORD_HTTPS:
+                if i in message.content:
+                    self.spam_text.append((message.author, message.content)) # append the author and message
+                    break
         
     @tasks.loop(minutes=5)
     async def reset_spam_text(self):
