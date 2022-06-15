@@ -10,6 +10,8 @@ STAFF_CHAT_ID         = 741151005688987769
 HTTPS = "https://"
 HTTP  = "http://"
 
+DISCORD_HTTPS = ("https://discord.com/", "https://cdn.discordapp.com/", "https://canary.discord.com/")
+
 class MyClient(discord.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -55,7 +57,8 @@ class MyClient(discord.Bot):
                 await message.channel.send(f"No spamming {message.author.mention}")
                 
         if HTTPS in message.content or HTTP in message.content:
-            self.spam_text.append((message.author, message.content)) # append the author and message
+            if DISCORD_HTTPS not in message.content:
+                self.spam_text.append((message.author, message.content)) # append the author and message
         
     @tasks.loop(minutes=5)
     async def reset_spam_text(self):
