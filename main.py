@@ -59,8 +59,8 @@ class MyClient(discord.Bot):
         if HTTPS in message.content or HTTP in message.content:
             for i in DISCORD_HTTPS:
                 if i in message.content:
-                    self.spam_text.append((message.author, message.content)) # append the author and message
-                    break
+                    return
+            self.spam_text.append((message.author, message.content)) # append the author and message
         
     @tasks.loop(minutes=5)
     async def reset_spam_text(self):
