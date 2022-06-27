@@ -84,6 +84,18 @@ async def blender_download(ctx):
 async def asset_submission(ctx):
     await ctx.respond("You can submit mob rigs here: https://github.com/TheDuckCow/MCprep/issues/245")
 
+@client.slash_command(name="why_is_standard_bad", guilds=[MCPREP_GUILD_ID])
+async def why_is_standard_bad(ctx):
+    images = None
+    with open('assets/images.json') as f:
+        data = json.load(f)
+        images = data["why_not_to_use_standard"]
+    
+    RESPONSE_1 = f"Standard was designed a really long time ago, so it's really bad in terms of dynamic range. This makes areas blown out such as the rays of light in the bottom image:\n{images[0]}"
+    RESPONSE_2 = f"You should use filmic instead, as it was designed with a higher dynamic range in mind. As you can see, the rays aren't blown out:\n {images[1]}"
+    await ctx.respond(RESPONSE_1)
+    await ctx.respond(RESPONSE_2)
+
 if __name__ == "__main__":
     token = None
     with open('config.json') as f:
