@@ -96,7 +96,7 @@ async def why_is_standard_bad(ctx):
     await ctx.respond(RESPONSE_1)
     await ctx.respond(RESPONSE_2)
     
-@client.slash_command(name="why_is_my_cycles_render_so_noisy?", guilds=[MCPREP_GUILD_ID])
+@client.slash_command(name="why_is_my_cycles_render_so_noisy", guilds=[MCPREP_GUILD_ID])
 async def why_is_my_render_griany(ctx):
     images = None
     with open('assets/images.json') as f:
