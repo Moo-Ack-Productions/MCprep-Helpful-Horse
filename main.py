@@ -113,6 +113,21 @@ async def why_is_my_render_griany(ctx):
     await ctx.respond(RESPONSE_3)
     await ctx.respond(RESPONSE_4)
     await ctx.respond(RESPONSE_5)
+    
+@client.slash_command(name="how_to_make_rtx_like_render", guilds=[MCPREP_GUILD_ID])
+async def how_to_make_rtx_like_render(ctx):
+    images = None
+    with open('assets/images.json') as f:
+        data = json.load(f)
+        images = data["rtx_like_render"]
+    
+    RESPONSE_1 = f"You mean stuff like this?: {images[0]}\n{images[1]}"
+    RESPONSE_2_1 = "The simple answer is time, blood, sweat, and tears. There's no magic button to instantly make good looking renders, it takes a lot of time, practice, and a willingness to learn. "
+    RESPONSE_2_2 = "A common mistake people make is not willing to watch a tutorial because \"it doesn't match the blender version I'm using!\" or \"it's not related to Minecraft!\"\n\n"
+    RESPONSE_2_3 = "The harsh reality is there is no easy path. You're going to have to learn by watching tutorials that are sometimes years old (Blender hasn't changed that much) or aren't remotely related to Minecraft. There is no easy path.\n\n"
+    RESPONSE_2_4 = "In short, if you want to be good, you have to put in the work"
+    await ctx.respond(RESPONSE_1)
+    await ctx.respond(RESPONSE_2_1 + RESPONSE_2_2 + RESPONSE_2_3 + RESPONSE_2_4)
 
 if __name__ == "__main__":
     token = None

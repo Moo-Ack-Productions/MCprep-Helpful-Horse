@@ -4,5 +4,7 @@
     "cycles_noise"  : ["https://media.discordapp.net/attachments/819070016036667412/991825680495030362/unknown.png?width=1246&height=701",
                         "https://media.discordapp.net/attachments/819070016036667412/991826049962876928/unknown.png?width=1246&height=701",
                         "https://media.discordapp.net/attachments/819070016036667412/991826233501429850/unknown.png?width=1246&height=701",
-                        "https://media.discordapp.net/attachments/819070016036667412/991826340657496184/unknown.png?width=263&height=701"]
+                        "https://media.discordapp.net/attachments/819070016036667412/991826340657496184/unknown.png?width=263&height=701"],
+    "rtx_like_render" : ["https://media.discordapp.net/attachments/770059749269569556/989664408563232818/TranquilWatersWatermarked.png?width=495&height=701",
+                        "https://media.discordapp.net/attachments/770059749269569556/987503933494816808/ReflectionWatermarked.png?width=495&height=701"]
 }
