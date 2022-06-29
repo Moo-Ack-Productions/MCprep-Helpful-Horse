@@ -1,4 +1,8 @@
 {
     "why_not_to_use_standard" : ["https://media.discordapp.net/attachments/737871405999456318/989655051171663902/unknown.png?width=1246&height=701",
-                                "https://media.discordapp.net/attachments/737871405999456318/989655260148682752/unknown.png?width=1246&height=701"]
+                                "https://media.discordapp.net/attachments/737871405999456318/989655260148682752/unknown.png?width=1246&height=701"],
+    "cycles_noise"  : ["https://media.discordapp.net/attachments/819070016036667412/991825680495030362/unknown.png?width=1246&height=701",
+                        "https://media.discordapp.net/attachments/819070016036667412/991826049962876928/unknown.png?width=1246&height=701",
+                        "https://media.discordapp.net/attachments/819070016036667412/991826233501429850/unknown.png?width=1246&height=701",
+                        "https://media.discordapp.net/attachments/819070016036667412/991826340657496184/unknown.png?width=263&height=701"]
 }

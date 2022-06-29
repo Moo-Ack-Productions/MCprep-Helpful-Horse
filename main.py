@@ -95,6 +95,24 @@ async def why_is_standard_bad(ctx):
     RESPONSE_2 = f"You should use filmic instead, as it was designed with a higher dynamic range in mind. As you can see, the rays aren't blown out:\n {images[1]}\n\nOf course Filmic can look more washed out sometimes, but this can be fixed by setting the \"Look\" setting to \"High Contrast\""
     await ctx.respond(RESPONSE_1)
     await ctx.respond(RESPONSE_2)
+    
+@client.slash_command(name=["why_is_my_cycles_render_so_noisy?", "why_is_my_render_so_grainy"], guilds=[MCPREP_GUILD_ID])
+async def why_is_my_render_griany(ctx):
+    images = None
+    with open('assets/images.json') as f:
+        data = json.load(f)
+        images = data["cycles_noise"]
+    
+    RESPONSE_1 = f"Cycles is a path tracing engine, so it produces very accurate lighting. A side effect of this is noise. At low samples it looks really bad:\n{images[0]}"
+    RESPONSE_2 = f"As the number of samples increase, the clearer the image becomes:\n{images[1]}"
+    RESPONSE_3 = f"There is a tool called denoising which helps with this problem (as seen in the bottom image):\n{images[2]}"
+    RESPONSE_4 = f"It can be enabled here. It's recommended to use OpenImage Denoise as it preserves detail better:\n{images[3]}"
+    RESPONSE_5 = "Remember this piece of advice though: denoisers are not magic. With low sample counts artifacts can appear that look like oil paint smudges."
+    await ctx.respond(RESPONSE_1)
+    await ctx.respond(RESPONSE_2)
+    await ctx.respond(RESPONSE_3)
+    await ctx.respond(RESPONSE_4)
+    await ctx.respond(RESPONSE_5)
 
 if __name__ == "__main__":
     token = None
