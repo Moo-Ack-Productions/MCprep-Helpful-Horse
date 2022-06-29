@@ -92,7 +92,7 @@ async def why_is_standard_bad(ctx):
         images = data["why_not_to_use_standard"]
     
     RESPONSE_1 = f"Standard was designed a really long time ago, so it's really bad in terms of dynamic range. This makes areas blown out such as the rays of light in the bottom image:\n{images[0]}"
-    RESPONSE_2 = f"You should use filmic instead, as it was designed with a higher dynamic range in mind. As you can see, the rays aren't blown out:\n {images[1]}"
+    RESPONSE_2 = f"You should use filmic instead, as it was designed with a higher dynamic range in mind. As you can see, the rays aren't blown out:\n {images[1]}\n\nOf course Filmic can look more washed out sometimes, but this can be fixed by setting the \"Look\" setting to \"High Contrast\""
     await ctx.respond(RESPONSE_1)
     await ctx.respond(RESPONSE_2)
 
