@@ -129,6 +129,14 @@ async def how_to_make_rtx_like_render(ctx):
     await ctx.respond(RESPONSE_1)
     await ctx.respond(RESPONSE_2_1 + RESPONSE_2_2 + RESPONSE_2_3 + RESPONSE_2_4)
 
+@client.slash_command(name="please_use_google_next_time", guilds=[MCPREP_GUILD_ID])
+async def please_use_google_next_time(ctx):
+    RESPONSE_1 = "While it's understandable that you need help, next time please do a google search first. It's a lot quicker and easier for everyone.\n"
+    RESPONSE_2 = "Tip: Avoid using terms like \"minecraft animation\" when searching. You won't get much and all Blender concepts are easy to apply to Minecraft animation. Ex:"
+    RESPONSE_3 = "Instead of this: \"How to attach objects to a minecraft rig in Blender\"\nDo this: \"How to attach objects to a rig in Blender\"\nYou'll get more search results that way"
+    await ctx.respond(RESPONSE_1)
+    await ctx.respond(RESPONSE_2)
+    await ctx.respond(RESPONSE_3)
 if __name__ == "__main__":
     token = None
     with open('config.json') as f:
