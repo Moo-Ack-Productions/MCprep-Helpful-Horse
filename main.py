@@ -131,7 +131,7 @@ async def how_to_make_rtx_like_render(ctx):
 
 @client.slash_command(name="please_use_google_next_time", guilds=[MCPREP_GUILD_ID])
 async def please_use_google_next_time(ctx):
-    RESPONSE_1 = "While it's understandable that you need help, next time please do a google search first. It's a lot quicker and easier for everyone.\n"
+    RESPONSE_1 = "The people on this server are indeed very helpful and have good knowledge to share, but sometimes you can find the best answers even quicker by googling your question - especially if it's generic. You can always ask for more help here if you couldn't find what you wanted.\n"
     RESPONSE_2 = "Tip: Avoid using terms like \"minecraft animation\" when searching. You won't get much and all Blender concepts are easy to apply to Minecraft animation. Ex:"
     RESPONSE_3 = "Instead of this: \"How to attach objects to a minecraft rig in Blender\"\nDo this: \"How to attach objects to a rig in Blender\"\nYou'll get more search results that way"
     await ctx.respond(RESPONSE_1)
