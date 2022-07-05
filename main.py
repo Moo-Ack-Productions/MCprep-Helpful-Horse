@@ -82,7 +82,7 @@ async def blender_download(ctx):
     
 @client.slash_command(name="where_do_i_submit_assets", guilds=[MCPREP_GUILD_ID])
 async def asset_submission(ctx):
-    await ctx.respond("You can submit mob rigs here: https://github.com/TheDuckCow/MCprep/issues/245")
+    await ctx.respond("You can submit mob rigs here (make sure the rig was made in Blender 2.93 for backwards compatibility): https://github.com/TheDuckCow/MCprep/issues/245")
 
 @client.slash_command(name="why_is_standard_bad", guilds=[MCPREP_GUILD_ID])
 async def why_is_standard_bad(ctx):
