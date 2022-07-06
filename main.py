@@ -49,7 +49,7 @@ class MyClient(discord.Bot):
                 for channel in message.guild.channels:
                     if isinstance(channel, discord.TextChannel):
                         try:
-                            await channel.purge(limit=5, check=lambda x: (message_content in x.content) and x.author.id == message_author.id)
+                            await message.channel.purge(limit=5, check=lambda x: (message_content in x.content) and x.author.id == message_author.id)
                         except Exception:
                             continue
                 await message.channel.send(f"I said no spamming {message_author.mention}")
@@ -68,7 +68,7 @@ class MyClient(discord.Bot):
                     return
             if findWholeWord("free nitro")(message_content) or findWholeWord("free")(message_content):
                 try:
-                    await channel.purge(limit=1)
+                    await message.channel.purge(limit=1)
                 except Exception as e:
                     print(e)
                 await message.channel.send(f"{message_author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
