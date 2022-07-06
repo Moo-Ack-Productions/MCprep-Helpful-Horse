@@ -36,42 +36,44 @@ class MyClient(discord.Bot):
         print(f'Logged on as {self.user}!')
 
     async def on_message(self, message: discord.Message):
-        if message.author.bot:
+        message_content = message.content
+        message_author = message.author
+        if message_author.bot:
             return
         
         elif message.channel.id == IDLE_MINER_CHANNEL_ID:
             return
         
         if len(self.spam_text):
-            if self.spam_text.count((message.author, message.content)) >= 3:
+            if self.spam_text.count((message_author, message_content)) >= 3:
                 for channel in message.guild.channels:
                     if isinstance(channel, discord.TextChannel):
                         try:
-                            await channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
+                            await channel.purge(limit=5, check=lambda x: (message_content in x.content) and x.author.id == message_author.id)
                         except Exception:
                             continue
-                await message.channel.send(f"I said no spamming {message.author.mention}")
-                await message.author.timeout_for(duration=datetime.timedelta(hours=5), reason="Spamming")
+                await message.channel.send(f"I said no spamming {message_author.mention}")
+                await message_author.timeout_for(duration=datetime.timedelta(hours=5), reason="Spamming")
                 
                 if message.guild.id == MCPREP_GUILD_ID:
-                    await self.staff_chat.send(f"{message.author} spammed this message \"{message.content}\"")
+                    await self.staff_chat.send(f"{message_author} spammed this message \"{message_content}\"")
                 
                 
-            if self.spam_text.count((message.author, message.content)) == 1:
-                await message.channel.send(f"No spamming {message.author.mention}")
+            if self.spam_text.count((message_author, message_content)) == 1:
+                await message.channel.send(f"No spamming {message_author.mention}")
                 
-        if HTTPS in message.content or HTTP in message.content:
+        if HTTPS in message_content or HTTP in message_content:
             for i in DISCORD_HTTPS:
-                if i in message.content:
+                if i in message_content:
                     return
-            if findWholeWord("free nitro")(message.content) or findWholeWord("free")(message.content):
-                await message.channel.send(f"{message.author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
-                await message.author.timeout_for(duration=datetime.timedelta(hours=5), reason="Sending a free nitro link")
+            if findWholeWord("free nitro")(message_content) or findWholeWord("free")(message_content):
+                await message.channel.send(f"{message_author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
+                await message_author.timeout_for(duration=datetime.timedelta(hours=5), reason="Sending a free nitro link")
                 try:
-                    await channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
+                    await channel.purge(limit=5, check=lambda x: (message_content in x.content) and x.author.id == message_author.id)
                 except Exception:
                     pass
-            self.spam_text.append((message.author, message.content)) # append the author and message
+            self.spam_text.append((message_author, message_content)) # append the author and message
         
     @tasks.loop(minutes=5)
     async def reset_spam_text(self):
