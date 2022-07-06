@@ -2,6 +2,7 @@ import discord
 from discord.ext import tasks
 import json
 import datetime
+import re
 
 MCPREP_GUILD_ID       = 737871405349339232
 IDLE_MINER_CHANNEL_ID = 746745594458144809
@@ -11,6 +12,9 @@ HTTPS = "https://"
 HTTP  = "http://"
 
 DISCORD_HTTPS = ("https://discord.com/", "https://cdn.discordapp.com/", "https://canary.discord.com/")
+
+def findWholeWord(w):
+    return re.compile(r'\b({0})\b'.format(w), flags=re.IGNORECASE).search
 
 class MyClient(discord.Bot):
     def __init__(self, *args, **kwargs):
@@ -60,6 +64,13 @@ class MyClient(discord.Bot):
             for i in DISCORD_HTTPS:
                 if i in message.content:
                     return
+            if findWholeWord("free nitro")(message.content) or findWholeWord("free")(message.content):
+                await message.channel.send(f"{message.author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
+                await message.author.timeout_for(duration=datetime.timedelta(hours=5), reason="Sending a free nitro link")
+                try:
+                    await channel.purge(limit=5, check=lambda x: (message.content in x.content) and x.author.id == message.author.id)
+                except Exception:
+                    pass
             self.spam_text.append((message.author, message.content)) # append the author and message
         
     @tasks.loop(minutes=5)
