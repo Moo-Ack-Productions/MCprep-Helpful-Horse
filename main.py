@@ -67,12 +67,12 @@ class MyClient(discord.Bot):
                 if i in message_content:
                     return
             if findWholeWord("free nitro")(message_content) or findWholeWord("free")(message_content):
-                await message.channel.send(f"{message_author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
-                await message_author.timeout_for(duration=datetime.timedelta(hours=5), reason="Sending a free nitro link")
                 try:
                     await channel.purge(limit=5, check=lambda x: (message_content in x.content) and x.author.id == message_author.id)
                 except Exception:
                     pass
+                await message.channel.send(f"{message_author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
+                await message_author.timeout_for(duration=datetime.timedelta(hours=5), reason="Sending a free nitro link")
             self.spam_text.append((message_author, message_content)) # append the author and message
         
     @tasks.loop(minutes=5)
