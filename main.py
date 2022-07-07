@@ -68,7 +68,7 @@ class MyClient(discord.Bot):
                     return
             if findWholeWord("free nitro")(message_content) or findWholeWord("free")(message_content):
                 try:
-                    await message.channel.purge(limit=1)
+                    await message.delete()
                 except Exception as e:
                     print(e)
                 await message.channel.send(f"{message_author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
