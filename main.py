@@ -73,6 +73,7 @@ class MyClient(discord.Bot):
                     print(e)
                 await message.channel.send(f"{message_author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
                 await message_author.timeout_for(duration=datetime.timedelta(hours=5), reason="Sending a free nitro link")
+                await self.staff_chat.send(f"{message_author} sent this message \"{message_content}\"")
                 return
             self.spam_text.append((message_author, message_content)) # append the author and message
         
