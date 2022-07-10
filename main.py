@@ -66,7 +66,7 @@ class MyClient(discord.Bot):
             for i in DISCORD_HTTPS:
                 if i in message_content:
                     return
-            if findWholeWord("free nitro")(message_content) or findWholeWord("free")(message_content):
+            if findWholeWord("free")(message_content) and findWholeWord("nitro")(message_content):
                 try:
                     await message.delete()
                 except Exception as e:
