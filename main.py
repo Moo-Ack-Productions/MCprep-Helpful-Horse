@@ -151,8 +151,8 @@ async def cycles_vs_eevee(ctx):
     RESPONSE_3 = "EEVEE does have one advantage though: NPR rendering such as anime or toon style rendering. Since EEVEE fakes its lighting, it's able to do things such as taking a shader input as a RGB mask, which makes EEVEE very powerful in the NPR world"
     RESPONSE_4 = "As for which engine is better, it depends. If by that question you meant \"Which engine is the best overall?\", then Cycles will always be better. If you meant \"Which engine is better for my style?\", that's for you to figure out on your own. If your style uses realistic lighting, then Cycles is your best bet. If your style doesn't need realistic lighting, then EEVEE may be a good option"
     RESPONSE_5 = "Sidenote: Before Blender 3.0, EEVEE was also much better in terms of volumetrics as they looked decent without taking eternity to render. However as of 3.0+, Cycles volumetrics have improved massively and now look much better then EEVEE's volumetrics"
-    await ctx.respond(RESPONSE_1 + RESPONSE_2)
-    await ctx.respond(RESPONSE_3 + RESPONSE_4)
+    await ctx.respond(RESPONSE_1 + RESPONSE_2 + RESPONSE_5)
+    await ctx.respond(RESPONSE_4)
     await ctx.respond(RESPONSE_5)
 
 @client.slash_command(name="please_use_google_next_time", guilds=[MCPREP_GUILD_ID])
