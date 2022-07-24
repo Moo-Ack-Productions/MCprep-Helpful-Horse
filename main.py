@@ -146,15 +146,13 @@ async def how_to_make_rtx_like_render(ctx):
     
 @client.slash_command(name="cycles_vs_eevee", guilds=[MCPREP_GUILD_ID])
 async def cycles_vs_eevee(ctx):
-    RESPONSE_1 = "Cycles is a path tracing engine, which means it properly simulates light. As a result, it creates stunning renders, but those renders come at the cost of render time and noise (use the \"why_is_my_cycles_render_so_noisy\" for more info)"
-    RESPONSE_2 = "EEVEE is a rasterized engine, which means it uses some crazy math to fake lighting. This means EEVEE has better performance, but the renders don't look as good compared to Cycles. In order to get something comparable, you need to do stuff such as baking indirect lighting, using reflection probes to improve reflections, etc."
+    RESPONSE_1 = "Cycles is a path tracing engine, which means it properly simulates light. As a result, it creates stunning renders, but those renders come at the cost of render time and noise (use the \"why_is_my_cycles_render_so_noisy\" for more info)\n"
+    RESPONSE_2 = "EEVEE is a rasterized engine, which means it uses some crazy math to fake lighting. This means EEVEE has better performance, but the renders don't look as good compared to Cycles. In order to get something comparable, you need to do stuff such as baking indirect lighting, using reflection probes to improve reflections, etc.\n"
     RESPONSE_3 = "EEVEE does have one advantage though: NPR rendering such as anime or toon style rendering. Since EEVEE fakes its lighting, it's able to do things such as taking a shader input as a RGB mask, which makes EEVEE very powerful in the NPR world"
     RESPONSE_4 = "As for which engine is better, it depends. If by that question you meant \"Which engine is the best overall?\", then Cycles will always be better. If you meant \"Which engine is better for my style?\", that's for you to figure out on your own. If your style uses realistic lighting, then Cycles is your best bet. If your style doesn't need realistic lighting, then EEVEE may be a good option"
     RESPONSE_5 = "Sidenote: Before Blender 3.0, EEVEE was also much better in terms of volumetrics as they looked decent without taking eternity to render. However as of 3.0+, Cycles volumetrics have improved massively and now look much better then EEVEE's volumetrics"
-    await ctx.respond(RESPONSE_1)
-    await ctx.respond(RESPONSE_2)
-    await ctx.respond(RESPONSE_3)
-    await ctx.respond(RESPONSE_4)
+    await ctx.respond(RESPONSE_1 + RESPONSE_2)
+    await ctx.respond(RESPONSE_3 + RESPONSE_4)
     await ctx.respond(RESPONSE_5)
 
 @client.slash_command(name="please_use_google_next_time", guilds=[MCPREP_GUILD_ID])
