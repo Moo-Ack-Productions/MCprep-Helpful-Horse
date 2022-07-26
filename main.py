@@ -153,15 +153,26 @@ async def cycles_vs_eevee(ctx):
     RESPONSE_5 = "Sidenote: Before Blender 3.0, EEVEE was also much better in terms of volumetrics as they looked decent without taking eternity to render. However as of 3.0+, Cycles volumetrics have improved massively and now look much better then EEVEE's volumetrics"
     await ctx.respond(RESPONSE_1 + RESPONSE_2 + RESPONSE_3)
     await ctx.respond(RESPONSE_4 + RESPONSE_5)
-
+    
 @client.slash_command(name="please_use_google_next_time", guilds=[MCPREP_GUILD_ID])
 async def please_use_google_next_time(ctx):
     RESPONSE_1 = "The people on this server are indeed very helpful and have good knowledge to share, but sometimes you can find the best answers even quicker by googling your question - especially if it's generic. You can always ask for more help here if you couldn't find what you wanted.\n"
-    RESPONSE_2 = "Tip: Avoid using terms like \"minecraft animation\" when searching. You won't get much and all Blender concepts are easy to apply to Minecraft animation. Ex:"
+    RESPONSE_2 = "Tip: Avoid using terms like \"minecraft animation\" when searching. You won't get much and all Blender concepts are easy to apply to Minecraft animation. Ex:\n"
     RESPONSE_3 = "Instead of this: \"How to attach objects to a minecraft rig in Blender\"\nDo this: \"How to attach objects to a rig in Blender\"\nYou'll get more search results that way"
     await ctx.respond(RESPONSE_1)
-    await ctx.respond(RESPONSE_2)
-    await ctx.respond(RESPONSE_3)
+    await ctx.respond(RESPONSE_2 + RESPONSE_3)
+    
+@client.slash_command(name="optifine_shaders_in_blender", guilds=[MCPREP_GUILD_ID])
+async def optifine_shaders_in_blender(ctx):
+    RESPONSE_1 = "Optifine shaders can not be used in Blender, regardless if you're using MCprep or not. Optifine shaders were designed for the Optifine rendering pipeline, which does not exist in Blender and will never exist in Blender.\n\n"
+    RESPONSE_2 = "Blender does have \"shaders\" though. You might know them as nodes (they're normally refered to as shader nodes).\n\n"
+    await ctx.respond(RESPONSE_1 + RESPONSE_2)
+
+@client.slash_command(name="shaders", guilds=[MCPREP_GUILD_ID])
+async def shaders(ctx):
+    RESPONSE_1 = "If by shaders you meant Optifine shaders, please use the `optifine_shaders_in_blender` command for info on why that's not possible.\n\n"
+    RESPONSE_2 = "From a technical standpoint, a shader is a program that's ran on a CPU or GPU that does anything related to graphics. In fact, vanilla Minecraft uses shaders even with the default lighting, they're just not as fancy."
+    await ctx.respond(RESPONSE_1 + RESPONSE_2)
     
 if __name__ == "__main__":
     token = None
