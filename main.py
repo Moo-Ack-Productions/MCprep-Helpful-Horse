@@ -164,7 +164,7 @@ async def please_use_google_next_time(ctx):
     
 @client.slash_command(name="optifine_shaders_in_blender", guilds=[MCPREP_GUILD_ID])
 async def optifine_shaders_in_blender(ctx):
-    RESPONSE_1 = "Optifine shaders can not be used in Blender, regardless if you're using MCprep or not. Optifine shaders were designed for the Optifine rendering pipeline, which does not exist in Blender and will never exist in Blender.\n\n"
+    RESPONSE_1 = "Optifine shaders can not be used in Blender, regardless if you're using MCprep or not. Optifine shaders were designed for the Optifine rendering pipeline, which does not exist in Blender and will never exist in Blender. If you wanted an easy way to do fancy lighting in Blender, then use the `how_to_make_rtx_like_render` command which will give you the harsh reality (apologies in advanced).\n\n"
     RESPONSE_2 = "Blender does have \"shaders\" though. You might know them as nodes (they're normally refered to as shader nodes).\n\n"
     await ctx.respond(RESPONSE_1 + RESPONSE_2)
 
