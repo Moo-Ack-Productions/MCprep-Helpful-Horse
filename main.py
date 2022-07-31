@@ -188,7 +188,7 @@ async def previewing_animation_slow(ctx):
     
 @client.slash_command(name="blender_27x", guilds=[MCPREP_GUILD_ID])
 async def blender_27x(ctx):
-    await ctx.respond("Please don't use Blender 2.7x, it's extremely outdated. If you need to transition from 2.7x, then use Bforartists and set the keybinds to 2.7x at startup: https://www.bforartists.de/")
+    await ctx.respond("Please upgrade from Blender 2.7x as soon as possible, it's extremely outdated. If you need to transition from 2.7x, then use Bforartists and set the keybinds to 2.7x at startup: https://www.bforartists.de/")
     
 if __name__ == "__main__":
     token = None
