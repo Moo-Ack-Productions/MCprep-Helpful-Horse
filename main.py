@@ -186,6 +186,10 @@ async def shaders(ctx):
 async def previewing_animation_slow(ctx):
     await ctx.respond("Make sure you're using solid mode and not material or render mode for previewing animation")
     
+@client.slash_command(name="blender_2_7x", guilds=[MCPREP_GUILD_ID])
+async def blender_2_7x(ctx):
+    await ctx.respond("Please for the love of all that is good don't use Blender 2.7x. If you want the 2.7x experience, then use Bforartists and set the keybinds to 2.7x at startup: https://www.bforartists.de/")
+    
 if __name__ == "__main__":
     token = None
     with open('config.json') as f:
