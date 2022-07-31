@@ -182,6 +182,10 @@ async def shaders(ctx):
     RESPONSE_2 = "From a technical standpoint, a shader is a program that's ran on a CPU or GPU that does anything related to graphics. In fact, vanilla Minecraft uses shaders even with the default lighting, they're just not as fancy."
     await ctx.respond(RESPONSE_1 + RESPONSE_2)
     
+@client.slash_command(name="previewing_animation_slow", guilds=[MCPREP_GUILD_ID])
+async def previewing_animation_slow(ctx):
+    await ctx.respond("Make sure you're using solid mode and not material or render mode for previewing animation")
+    
 if __name__ == "__main__":
     token = None
     with open('config.json') as f:
