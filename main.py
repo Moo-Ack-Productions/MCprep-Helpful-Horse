@@ -95,10 +95,18 @@ async def mcprep_download(ctx):
 async def blender_download(ctx):
     await ctx.respond("Blender can be downloaded here: https://www.blender.org/")
     
-@client.slash_command(name="where_do_i_submit_assets", guilds=[MCPREP_GUILD_ID])
+@client.slash_command(name="asset_submission", guilds=[MCPREP_GUILD_ID])
 async def asset_submission(ctx):
     await ctx.respond("You can submit mob rigs here (make sure the rig was made in Blender 2.93 for backwards compatibility): https://github.com/TheDuckCow/MCprep/issues/245")
 
+@client.slash_command(name="bug_report", guilds=[MCPREP_GUILD_ID])
+async def bug_report(ctx):
+    await ctx.respond("Submit a bug report here: https://github.com/TheDuckCow/MCprep/issues/new?assignees=&labels=user-troubleshoot&template=Bug-Report.yml")
+    
+@client.slash_command(name="feature_request", guilds=[MCPREP_GUILD_ID])
+async def feature_request(ctx):
+    await ctx.respond("Submit a feature request here: https://github.com/TheDuckCow/MCprep/issues/new?assignees=&labels=enhancement&template=Feature-Request.yml")
+    
 @client.slash_command(name="why_is_standard_bad", guilds=[MCPREP_GUILD_ID])
 async def why_is_standard_bad(ctx):
     images = None
