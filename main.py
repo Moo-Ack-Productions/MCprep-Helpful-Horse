@@ -97,7 +97,7 @@ async def blender_download(ctx):
     
 @client.slash_command(name="asset_submission", guilds=[MCPREP_GUILD_ID])
 async def asset_submission(ctx):
-    await ctx.respond("You can submit mob rigs here (make sure the rig was made in Blender 2.93 for backwards compatibility): https://github.com/TheDuckCow/MCprep/issues/245")
+    await ctx.respond("You can submit mob rigs here: https://github.com/TheDuckCow/MCprep/issues/new?assignees=&labels=enhancement&template=Asset-Submission.yaml")
 
 @client.slash_command(name="bug_report", guilds=[MCPREP_GUILD_ID])
 async def bug_report(ctx):
