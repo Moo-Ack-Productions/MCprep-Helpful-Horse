@@ -90,10 +90,18 @@ client = MyClient()
 @client.slash_command(name="mcprep_download", guilds=[MCPREP_GUILD_ID])
 async def mcprep_download(ctx):
     await ctx.respond("MCprep can be downloaded here: https://github.com/TheDuckCow/MCprep/releases")
+
+@client.slash_command(name="mcprep_kaion", guilds=[MCPREP_GUILD_ID])
+async def mcprep_kaion(ctx):
+    await ctx.respond("MCprep Kaion is a fork of MCprep created by <@668304274580701202> with the goal of at least one update per month (though often times there's more than one update).\n\nKaion is only recommended for users that understand how to do proper bug reports and are willing to sacrafice a bit of stability for new features\n\nIt can be found: https://github.com/StandingPadAnimations/MCprep-Kaion")
     
 @client.slash_command(name="blender_download", guilds=[MCPREP_GUILD_ID])
 async def blender_download(ctx):
     await ctx.respond("Blender can be downloaded here: https://www.blender.org/")
+
+@client.slash_command(name="my_hardware_sucks", guilds=[MCPREP_GUILD_ID])
+async def my_hardware_sucks(ctx):
+    await ctx.respond("Hardware does not matter in the beginning, whoever said that to you was lying.\n\nAll you need to get into 3D rendering is a computer, Blender, some time, and imagination.")
     
 @client.slash_command(name="asset_submission", guilds=[MCPREP_GUILD_ID])
 async def asset_submission(ctx):
@@ -106,7 +114,11 @@ async def bug_report(ctx):
 @client.slash_command(name="feature_request", guilds=[MCPREP_GUILD_ID])
 async def feature_request(ctx):
     await ctx.respond("Submit a feature request here: https://github.com/TheDuckCow/MCprep/issues/new?assignees=&labels=enhancement&template=Feature-Request.yml")
-    
+
+@client.slash_command(name="mojang_style", guilds[MCPREP_GUILD_ID])
+async def mojang_style(ctx):
+    await ctx.respond("The \"Mojang Style\" is also known as barebones. All you need is the barebones texturepack and practice.")
+
 @client.slash_command(name="why_is_standard_bad", guilds=[MCPREP_GUILD_ID])
 async def why_is_standard_bad(ctx):
     images = None
@@ -185,6 +197,14 @@ async def shaders(ctx):
 @client.slash_command(name="previewing_animation_slow", guilds=[MCPREP_GUILD_ID])
 async def previewing_animation_slow(ctx):
     await ctx.respond("Make sure you're using solid mode and not material or render mode for previewing animation")
+
+@client.slash_command(name="unrealistic_expectations", guilds=[MCPREP_GUILD_ID])
+async def unrealistic_expectations(ctx):
+    await ctx.respond("Your expectations are too unrealistic")
+
+@client.slash_command(name="world_exporter_issue", guilds=[MCPREP_GUILD_ID)
+async def world_exporter_issue(ctx):
+    await ctx.respond("The thing you've mentioned is something that would need to be done on the world exporter side first. We depend on world expoerer developers to do what we need to do, and they depend on us and othe r users to suggest features. For example, biome colors would require something exported by world exporters since all biome information is lose when exported")
     
 @client.slash_command(name="blender_27x", guilds=[MCPREP_GUILD_ID])
 async def blender_27x(ctx):
