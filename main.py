@@ -115,7 +115,7 @@ async def bug_report(ctx):
 async def feature_request(ctx):
     await ctx.respond("Submit a feature request here: https://github.com/TheDuckCow/MCprep/issues/new?assignees=&labels=enhancement&template=Feature-Request.yml")
 
-@client.slash_command(name="mojang_style", guilds[MCPREP_GUILD_ID])
+@client.slash_command(name="mojang_style", guilds=[MCPREP_GUILD_ID])
 async def mojang_style(ctx):
     await ctx.respond("The \"Mojang Style\" is also known as barebones. All you need is the barebones texturepack and practice.")
 
