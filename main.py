@@ -202,7 +202,7 @@ async def previewing_animation_slow(ctx):
 async def unrealistic_expectations(ctx):
     await ctx.respond("Your expectations are too unrealistic")
 
-@client.slash_command(name="world_exporter_issue", guilds=[MCPREP_GUILD_ID)
+@client.slash_command(name="world_exporter_issue", guilds=[MCPREP_GUILD_ID])
 async def world_exporter_issue(ctx):
     await ctx.respond("The thing you've mentioned is something that would need to be done on the world exporter side first. We depend on world expoerer developers to do what we need to do, and they depend on us and othe r users to suggest features. For example, biome colors would require something exported by world exporters since all biome information is lose when exported")
     
