@@ -209,6 +209,10 @@ async def world_exporter_issue(ctx):
 @client.slash_command(name="blender_27x", guilds=[MCPREP_GUILD_ID])
 async def blender_27x(ctx):
     await ctx.respond("Please upgrade from Blender 2.7x as soon as possible as it's extremely outdated. If you need to transition from 2.7x, then use Bforartists and set the keybinds to 2.7x at startup: https://www.bforartists.de/")
+
+@client.slash_command(name="watch_a_tutorial", guilds=[MCPREP_GUILD_ID])
+async def watch_a_tutorial(ctx):
+    await ctx.respond("Let me guess, you thought you could get by in Blender without learning the basics?\n\nTutorials may seem like a waste of time, but here we're not going to teach you every single thing about Blender. It's a waste of our time, it's a waste of your time, and this channel is not here to teach you something that should have already been taught to you.\n\nJudo has some nice tutorials (2.9 is not needed, it was just the latest version of Blender when it was made): https://www.youtube.com/playlist?list=PLkN2rUqk0BtWVTVZomXYdJPrMnooovMKy")
     
 if __name__ == "__main__":
     token = None
