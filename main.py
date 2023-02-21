@@ -157,12 +157,8 @@ async def how_to_make_rtx_like_render(ctx):
         images = data["rtx_like_render"]
     
     RESPONSE_1 = f"You mean stuff like this?: {images[0]}\n{images[1]}"
-    RESPONSE_2_1 = "The simple answer is time, blood, sweat, and tears. There's no magic button to instantly make good looking renders, it takes a lot of time, practice, and a willingness to learn. "
-    RESPONSE_2_2 = "A common mistake people make is not willing to watch a tutorial because \"it doesn't match the blender version I'm using!\" or \"it's not related to Minecraft!\"\n\n"
-    RESPONSE_2_3 = "The harsh reality is there is no easy path. You're going to have to learn by watching tutorials that are sometimes years old (Blender hasn't changed that much) or aren't remotely related to Minecraft. There is no easy path.\n\n"
-    RESPONSE_2_4 = "In short, if you want to be good, you have to put in the work"
     await ctx.respond(RESPONSE_1)
-    await ctx.respond(RESPONSE_2_1 + RESPONSE_2_2 + RESPONSE_2_3 + RESPONSE_2_4)
+    await ctx.respond("Creating good-looking renders takes time and practice. While there's no magic button, there are plenty of tutorials available to help you learn. Don't be discouraged if the tutorials are for an older version of Blender or not related to Minecraft - the principles are still applicable. Keep practicing and don't give up. Remember, if you want to be good, you have to put in the work.")
     
 @client.slash_command(name="cycles_vs_eevee", guilds=[MCPREP_GUILD_ID])
 async def cycles_vs_eevee(ctx):
@@ -176,17 +172,11 @@ async def cycles_vs_eevee(ctx):
     
 @client.slash_command(name="please_use_google_next_time", guilds=[MCPREP_GUILD_ID])
 async def please_use_google_next_time(ctx):
-    RESPONSE_1 = "The people on this server are indeed very helpful and have good knowledge to share, but sometimes you can find the best answers even quicker by googling your question - especially if it's generic. You can always ask for more help here if you couldn't find what you wanted.\n"
-    RESPONSE_2 = "Tip: Avoid using terms like \"minecraft animation\" when searching. You won't get much and all Blender concepts are easy to apply to Minecraft animation. Ex:\n"
-    RESPONSE_3 = "Instead of this: \"How to attach objects to a minecraft rig in Blender\"\nDo this: \"How to attach objects to a rig in Blender\"\nYou'll get more search results that way"
-    await ctx.respond(RESPONSE_1)
-    await ctx.respond(RESPONSE_2 + RESPONSE_3)
+    await ctx.respond("We're happy to help with your issues, but have you tried googling for a solution? You might be able to find the answer you're looking for faster that way.")
     
 @client.slash_command(name="optifine_shaders_in_blender", guilds=[MCPREP_GUILD_ID])
 async def optifine_shaders_in_blender(ctx):
-    RESPONSE_1 = "Optifine shaders can not be used in Blender, regardless if you're using MCprep or not. Optifine shaders were designed for the Optifine rendering pipeline, which does not exist in Blender and will never exist in Blender. If you wanted an easy way to do fancy lighting in Blender, then use the `how_to_make_rtx_like_render` command which will give you the harsh reality (apologies in advanced).\n\n"
-    RESPONSE_2 = "Blender does have \"shaders\" though. You might know them as nodes (they're normally refered to as shader nodes).\n\n"
-    await ctx.respond(RESPONSE_1 + RESPONSE_2)
+    await ctx.respond("Optifine shaders aren't compatible with Blender, but you can create custom materials and use Blender's built-in lighting system to achieve similar lighting effects.")
 
 @client.slash_command(name="shaders", guilds=[MCPREP_GUILD_ID])
 async def shaders(ctx):
@@ -204,7 +194,7 @@ async def unrealistic_expectations(ctx):
 
 @client.slash_command(name="world_exporter_issue", guilds=[MCPREP_GUILD_ID])
 async def world_exporter_issue(ctx):
-    await ctx.respond("The thing you've mentioned is something that would need to be done on the world exporter side first. We depend on world expoerer developers to do what we need to do, and they depend on us and othe r users to suggest features. For example, biome colors would require something exported by world exporters since all biome information is lose when exported")
+    await ctx.respond("That feature would require changes to the world exporter, which is developed separately from MCprep. We depend on their developers to implement the necessary changes. For example, biome colors would need something exported by the world exporter since all biome information is lost during export.")
     
 @client.slash_command(name="blender_27x", guilds=[MCPREP_GUILD_ID])
 async def blender_27x(ctx):
@@ -212,7 +202,7 @@ async def blender_27x(ctx):
 
 @client.slash_command(name="watch_a_tutorial", guilds=[MCPREP_GUILD_ID])
 async def watch_a_tutorial(ctx):
-    await ctx.respond("Let me guess, you thought you could get by in Blender without learning the basics?\n\nTutorials may seem like a waste of time, but here we're not going to teach you every single thing about Blender. It's a waste of our time, it's a waste of your time, and this channel is not here to teach you something that should have already been taught to you.\n\nJudo has some nice tutorials (2.9 is not needed, it was just the latest version of Blender when it was made): https://www.youtube.com/playlist?list=PLkN2rUqk0BtWVTVZomXYdJPrMnooovMKy")
+    await ctx.respond("Learning the basics of Blender is important to get the most out of the software. While we can't teach you everything here, we recommend checking out some tutorials to help you get started. Judo has some great ones that cover the basics: https://www.youtube.com/playlist?list=PLkN2rUqk0BtWVTVZomXYdJPrMnooovMKy. These tutorials were made with an earlier version of Blender, but they still apply to the current version. Good luck!")
     
 if __name__ == "__main__":
     token = None
