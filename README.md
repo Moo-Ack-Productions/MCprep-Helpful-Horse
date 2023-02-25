@@ -19,14 +19,14 @@ IDLE_MINER_CHANNEL_ID = 746745594458144809 # Channel you want to exclude
 STAFF_CHAT_ID         = 741151005688987769 # Channel you want to send reports to
 ```
 
-4. Install the alpha version of Pycord (as of June 2022) with pip (the Pycord alpha has features like slash commands):
+4. Install Pycord:
 ```bash
 # NOTE: Python 3.8 and above is needed
 # Mac and linux
-python3 -m pip install -U py-cord --pre 
+python3 -m pip install -U py-cord
 
 # Windows
-py -3 -m pip install -U py-cord --pre
+py -3 -m pip install -U py-cord
 ```
 
 5. Run main.py:
