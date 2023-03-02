@@ -19,6 +19,16 @@ IDLE_MINER_CHANNEL_ID = 746745594458144809 # Channel you want to exclude
 STAFF_CHAT_ID         = 741151005688987769 # Channel you want to send reports to
 ```
 
+Now you must choose between 2 routes
+
+### Docker
+4. If you have Docker installed, just run the following:
+```
+docker build -t mcprep-helpful-horse-docker .
+docker run -d --name mcprep-helpful-horse mcprep-helpful-horse-docker
+```
+
+### Manually (with a touch of systemd at the end, if you're a Linux user)
 4. Install Pycord:
 ```bash
 # NOTE: Python 3.8 and above is needed
