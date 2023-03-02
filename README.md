@@ -25,7 +25,7 @@ Now you must choose between 2 routes
 4. If you have Docker installed, just run the following:
 ```
 docker build -t mcprep-helpful-horse-docker .
-docker run -d --name mcprep-helpful-horse mcprep-helpful-horse-docker
+docker run -d --restart always --name mcprep-helpful-horse mcprep-helpful-horse-docker
 ```
 
 ### Manually (with a touch of systemd at the end, if you're a Linux user)
