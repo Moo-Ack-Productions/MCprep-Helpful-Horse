@@ -1,5 +1,10 @@
 # syntax=docker/dockerfile:1.2
 
+# Buildx for docker
+FROM docker
+COPY --from=docker/buildx-bin:latest /buildx /usr/libexec/docker/cli-plugins/docker-buildx
+RUN docker buildx version
+
 # Set up environment
 FROM python:3.10-slim as builder
 
