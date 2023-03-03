@@ -15,8 +15,10 @@ WORKDIR /app
 COPY --from=builder /app/wheels /wheels
 COPY --from=builder /app/requirements.txt .
 
-# Create user so process doesn't run as root
-RUN addgroup --system app && adduser --system --group app
+# Create user so process doesn't run as root, 
+# and disables the existance of the home directory + shell access
+RUN addgroup --gid 1001 --system app && \
+    adduser --no-create-home --shell /bin/false --disabled-password --uid 1001 --system --group app
 USER app
 
 # Install wheels, copy the files, and start running
