@@ -16,14 +16,6 @@ RUN pip install -U \
 # FINAL IMAGE
 FROM python:3.10-slim
 
-# Tini
-ENV TINI_VERSION="v0.19.0"
-
-# Remove arm64 at the end if you don't use ARM, Helpful Horse runs on an ARM
-# server as of now
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-arm64 /tini
-RUN chmod +x /tini
-
 # Workdir and copying stuff from the builder image
 WORKDIR /app
 COPY --from=builder /app/wheels /wheels
@@ -43,5 +35,4 @@ USER app
 RUN pip install --upgrade pip && pip install --no-cache /wheels/*
 COPY . .
 
-ENTRYPOINT ["/tini", "--"]
 CMD [ "python3", "main.py"]
