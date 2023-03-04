@@ -1,18 +1,17 @@
 # syntax=docker/dockerfile:1.2
 
-# Download packages
+# This image sets up packages and whatnot, it will not be 
+# included in the final image
 FROM python:3.10-slim as builder
-
 WORKDIR /app
+COPY requirements.txt .
 
 # Update
 RUN pip install -U \
     pip \
     setuptools \
-    wheel
-
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r requirements.txt
+    wheel \
+    && pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r requirements.txt
 
 # FINAL IMAGE
 FROM python:3.10-slim
@@ -22,18 +21,19 @@ ENV TINI_VERSION="v0.19.0"
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
+# Workdir and copying stuff from the builder image
 WORKDIR /app
 COPY --from=builder /app/wheels /wheels
 COPY --from=builder /app/requirements.txt .
 
-# Update stuff
+# Update stuff and create new user
 RUN pip install -U \
     pip \
     setuptools \
-    wheel
+    wheel \
+    && addgroup --system app && adduser --system --group app
 
-# Create user so process doesn't run as root
-RUN addgroup --system app && adduser --system --group app
+# Change user
 USER app
 
 # Install wheels, copy the files, and start running
