@@ -18,7 +18,10 @@ FROM python:3.10-slim
 
 # Tini
 ENV TINI_VERSION="v0.19.0"
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+
+# Remove arm64 at the end if you don't use ARM, Helpful Horse runs on an ARM
+# server as of now
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-arm64 /tini
 RUN chmod +x /tini
 
 # Workdir and copying stuff from the builder image
