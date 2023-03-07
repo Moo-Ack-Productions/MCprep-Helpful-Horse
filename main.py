@@ -26,10 +26,6 @@ class MyClient(discord.Bot):
         intents.message_content = True
         discord.Bot.__init__(self, intents=intents)
         
-        # the magic behind the whole thing
-        self.spam_text = []
-        self.reset_spam_text.start()
-        
         self.staff_chat = self.get_channel(STAFF_CHAT_ID)
         
     async def on_ready(self):
@@ -59,14 +55,6 @@ class MyClient(discord.Bot):
                 return
             self.spam_text.append((message_author, message_content)) # append the author and message
         
-    @tasks.loop(minutes=5)
-    async def reset_spam_text(self):
-        self.spam_text = []
-        
-    @reset_spam_text.before_loop
-    async def initionalize(self):
-        await self.wait_until_ready()
-
 client = MyClient()
 
 @client.slash_command(name="mcprep_download", guilds=[MCPREP_GUILD_ID])
