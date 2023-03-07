@@ -168,7 +168,11 @@ async def world_exporter_issue(ctx:commands.Context):
     
 @client.slash_command(name="blender_27x", guilds=[MCPREP_GUILD_ID])
 async def blender_27x(ctx:commands.Context):
-    await ctx.reply("Please upgrade from Blender 2.7x as soon as possible as it's extremely outdated. If you need to transition from 2.7x, then use Bforartists and set the keybinds to 2.7x at startup: https://www.bforartists.de/")
+    await ctx.reply("Please upgrade from Blender 2.7x as soon as possible as it's extremely outdated. If you need to transition from 2.7x, then use the latest relase of Blender and set the keybinds to 2.7x")
+
+@client.slash_command(name="bforartists", guilds=[MCPREP_GUILD_ID])
+async def bforartists(ctx: commands.Context):
+    await ctx.reply("Bforartists is a fork of Blender that focuses on GUI enhancements. It's based of the alpha version of Blender, so there may be some issues related to compatability, but you can ask <@668304274580701202> who uses it as his daily driver")
 
 @client.slash_command(name="watch_a_tutorial", guilds=[MCPREP_GUILD_ID])
 async def watch_a_tutorial(ctx:commands.Context):
