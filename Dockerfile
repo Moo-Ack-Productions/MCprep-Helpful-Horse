@@ -7,6 +7,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Update
+ENV PIP_ROOT_USER_ACTION=ignore
 RUN pip install -U \
     pip \
     setuptools \
@@ -21,19 +22,18 @@ WORKDIR /app
 COPY --from=builder /app/wheels /wheels
 COPY --from=builder /app/requirements.txt .
 
-# Update stuff and create new user
+# Update stuff, create new user, and install packages
+ENV PIP_ROOT_USER_ACTION=ignore
 RUN pip install -U \
     pip \
     setuptools \
     wheel \
     && addgroup --system app \
-    && adduser --no-create-home --system --group app
+    && adduser --no-create-home --system --group app \
+    && pip install --no-cache /wheels/*
 
 # Change user so that commands don't run as root
 USER app
 
-# Install wheels, copy the files, and start running
-RUN pip install --no-cache /wheels/*
 COPY . .
-
 CMD [ "python3", "main.py"]
