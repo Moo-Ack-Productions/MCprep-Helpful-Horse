@@ -173,7 +173,15 @@ async def blender_27x(ctx):
 @client.slash_command(name="watch_a_tutorial", guilds=[MCPREP_GUILD_ID])
 async def watch_a_tutorial(ctx):
     await ctx.respond("Learning the basics of Blender is important to get the most out of the software. While we can't teach you everything here, we recommend checking out some tutorials to help you get started. Judo has some great ones that cover the basics: https://www.youtube.com/playlist?list=PLkN2rUqk0BtWVTVZomXYdJPrMnooovMKy. These tutorials were made with an earlier version of Blender, but they still apply to the current version. Good luck!")
-    
+   
+@client.slash_command(name="no_numerical_ratings", guilds=[MCPREP_GUILD_ID])
+async def no_numerical_ratings(ctx):
+    await ctx.respond("Numerical ratings are not allowed as per server rules")
+
+@client.slash_command(name="bad_criticism", guilds=[MCPREP_GUILD_ID])
+async def bad_criticism(ctx):
+    await ctx.respond()
+
 if __name__ == "__main__":
     token = None
     with open('config.json') as f:
