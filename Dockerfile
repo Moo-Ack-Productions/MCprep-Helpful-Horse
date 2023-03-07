@@ -27,7 +27,7 @@ RUN pip install -U \
     setuptools \
     wheel \
     && addgroup --system app \
-    && adduser --system --group app
+    && adduser --no-create-home --system --group app
 
 # Change user so that commands don't run as root
 USER app
