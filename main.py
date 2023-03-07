@@ -44,24 +44,6 @@ class MyClient(discord.Bot):
         elif message.channel.id == IDLE_MINER_CHANNEL_ID:
             return
         
-        if len(self.spam_text):
-            if self.spam_text.count((message_author, message_content)) >= 3:
-                for channel in message.guild.channels:
-                    if isinstance(channel, discord.TextChannel):
-                        try:
-                            await message.channel.purge(limit=5, check=lambda x: (message_content in x.content) and x.author.id == message_author.id)
-                        except Exception:
-                            continue
-                await message.channel.send(f"I said no spamming {message_author.mention}")
-                await message_author.timeout_for(duration=datetime.timedelta(hours=5), reason="Spamming")
-                
-                if message.guild.id == MCPREP_GUILD_ID:
-                    await self.staff_chat.send(f"{message_author} spammed this message \"{message_content}\"")
-                
-                
-            if self.spam_text.count((message_author, message_content)) == 1:
-                await message.channel.send(f"No spamming {message_author.mention}")
-                
         if HTTPS in message_content or HTTP in message_content:
             for i in DISCORD_HTTPS:
                 if i in message_content:
