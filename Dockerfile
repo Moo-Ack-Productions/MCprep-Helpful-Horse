@@ -26,7 +26,8 @@ RUN pip install -U \
     pip \
     setuptools \
     wheel \
-    && addgroup --system app && adduser --system --group app
+    && addgroup --system app \
+    && adduser --system --group app
 
 # Change user
 USER app
