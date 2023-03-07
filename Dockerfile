@@ -29,7 +29,7 @@ RUN pip install -U \
     && addgroup --system app \
     && adduser --system --group app
 
-# Change user
+# Change user so that commands don't run as root
 USER app
 
 # Install wheels, copy the files, and start running
