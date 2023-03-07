@@ -33,7 +33,7 @@ RUN pip install -U \
 USER app
 
 # Install wheels, copy the files, and start running
-RUN pip install --upgrade pip && pip install --no-cache /wheels/*
+RUN pip install --no-cache /wheels/*
 COPY . .
 
 CMD [ "python3", "main.py"]
