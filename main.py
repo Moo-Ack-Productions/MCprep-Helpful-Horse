@@ -190,10 +190,6 @@ async def watch_a_tutorial(ctx: commands.Context):
 async def no_numerical_ratings(ctx: commands.Context):
     await ctx.respond("Numerical ratings are not allowed as per server rules")
 
-@client.slash_command(name="bad_criticism", guilds=[MCPREP_GUILD_ID])
-async def bad_criticism(ctx: commands.Context):
-    await ctx.respond()
-
 if __name__ == "__main__":
     token = None
     with open('config.json') as f:
