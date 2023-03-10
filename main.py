@@ -149,7 +149,7 @@ async def rig_sucks(ctx: commands.Context):
     images = None
     with open('assets/images.json') as f:
         data = json.load(f)
-        images = data["rtx_like_render"]
+        images = data["make_new_rig"]
     await ctx.respond(f"Thank you for your feedback, but rigs are made and maintained by the community. If you don't like how the rigs are, then we'll gladly take submissions for replacement rigs {images[0]}")
     
 @client.slash_command(name="optifine_shaders_in_blender", guilds=[MCPREP_GUILD_ID])
