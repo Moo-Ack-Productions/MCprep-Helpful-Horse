@@ -143,6 +143,14 @@ async def cycles_vs_eevee(ctx: commands.Context):
 @client.slash_command(name="please_use_google_next_time", guilds=[MCPREP_GUILD_ID])
 async def please_use_google_next_time(ctx: commands.Context):
     await ctx.respond("We're happy to help with your issues, but have you tried googling for a solution? You might be able to find the answer you're looking for faster that way.")
+
+@client.slash_command(name="rig_sucks", guilds=[MCPREP_GUILD_ID])
+async def rig_sucks(ctx: commands.Context):
+    images = None
+    with open('assets/images.json') as f:
+        data = json.load(f)
+        images = data["rtx_like_render"]
+    await ctx.respond(f"Thank you for your feedback, but rigs are made and maintained by the community. If you don't like how the rigs are, then we'll gladly take submissions for replacement rigs {images[0]}")
     
 @client.slash_command(name="optifine_shaders_in_blender", guilds=[MCPREP_GUILD_ID])
 async def optifine_shaders_in_blender(ctx: commands.Context):
