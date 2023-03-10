@@ -151,6 +151,10 @@ async def rig_sucks(ctx: commands.Context):
         data = json.load(f)
         images = data["make_new_rig"]
     await ctx.respond(f"Thank you for your feedback, but rigs are made and maintained by the community. If you don't like how the rigs are, then we'll gladly take submissions for replacement rigs {images[0]}")
+
+@client.slash_command(name="contribute_to_mcprep", guilds=[MCPREP_GUILD_ID])
+async def contribute_to_mcprep(ctx: commands.Context):
+    await ctx.respond("Thanks for the feedback, though our hands are pretty much full when it comes to MCPrep (there's really only 2 active maintainers, and both of them are quite busy in real life). If you can implement the feature/changes you want to see in MCprep, please do, and open a pull request on the MCprep GitHub repo!\n\nA guide can be found here: https://github.com/TheDuckCow/MCprep/blob/dev/CONTRIBUTING.md")
     
 @client.slash_command(name="optifine_shaders_in_blender", guilds=[MCPREP_GUILD_ID])
 async def optifine_shaders_in_blender(ctx: commands.Context):
