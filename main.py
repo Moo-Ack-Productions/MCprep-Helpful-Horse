@@ -63,7 +63,7 @@ async def mcprep_download(ctx: commands.Context):
 
 @client.slash_command(name="mcprep_kaion", guilds=[MCPREP_GUILD_ID])
 async def mcprep_kaion(ctx: commands.Context):
-    await ctx.respond("MCprep Kaion is a fork of MCprep created by <@668304274580701202> with the goal of at least one update per month (though often times there's more than one update).\n\nKaion is only recommended for users that understand how to do proper bug reports and are willing to sacrafice a bit of stability for new features\n\nIt can be found here: https://github.com/StandingPadAnimations/MCprep-Kaion")
+    await ctx.respond("MCprep Kaion is a fork of MCprep created by <@668304274580701202> with the goal of at least one update per month (though often times there's more than one update).\n\nKaion is only recommended for users that understand how to do proper bug reports and are willing to sacrifice a bit of stability for new features\n\nIt can be found here: https://github.com/StandingPadAnimations/MCprep-Kaion")
     
 @client.slash_command(name="blender_download", guilds=[MCPREP_GUILD_ID])
 async def blender_download(ctx: commands.Context):
