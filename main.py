@@ -72,7 +72,11 @@ async def blender_download(ctx: commands.Context):
 @client.slash_command(name="my_hardware_sucks", guilds=[MCPREP_GUILD_ID])
 async def my_hardware_sucks(ctx: commands.Context):
     await ctx.respond("Hardware does not matter in the beginning, whoever said that to you was lying.\n\nAll you need to get into 3D rendering is a computer, Blender, some time, and imagination.")
-    
+
+@client.slash_command(name="older_versions", guilds=[MCPREP_GUILD_ID])
+async def older_versions(ctx: commands.Context):
+    await ctx.respond("We don't support older versions of MCprep, especially ones with known bugs. You should download the latest version: https://github.com/TheDuckCow/MCprep/releases")
+
 @client.slash_command(name="asset_submission", guilds=[MCPREP_GUILD_ID])
 async def asset_submission(ctx: commands.Context):
     await ctx.respond("You can submit mob rigs here: https://github.com/TheDuckCow/MCprep/issues/new?assignees=&labels=enhancement&template=Asset-Submission.yaml")
@@ -180,7 +184,7 @@ async def world_exporter_issue(ctx: commands.Context):
     
 @client.slash_command(name="blender_27x", guilds=[MCPREP_GUILD_ID])
 async def blender_27x(ctx: commands.Context):
-    await ctx.respond("Please upgrade from Blender 2.7x as soon as possible as it's extremely outdated. If you need to transition from 2.7x, then use the latest relase of Blender and set the keybinds to 2.7x")
+    await ctx.respond("Please upgrade from Blender 2.7x as soon as possible as it's extremely outdated and MCprep 3.5 will stop supporting it. If you need to transition from 2.7x, then use the latest relase of Blender and set the keybinds to 2.7x")
 
 @client.slash_command(name="bforartists", guilds=[MCPREP_GUILD_ID])
 async def bforartists(ctx: commands.Context):
