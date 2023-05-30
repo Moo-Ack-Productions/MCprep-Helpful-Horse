@@ -150,11 +150,7 @@ async def please_use_google_next_time(ctx: commands.Context):
 
 @client.slash_command(name="rig_sucks", guilds=[MCPREP_GUILD_ID])
 async def rig_sucks(ctx: commands.Context):
-    images = None
-    with open('assets/images.json') as f:
-        data = json.load(f)
-        images = data["make_new_rig"]
-    await ctx.respond(f"Thank you for your feedback, but rigs are made and maintained by the community. If you don't like how the rigs are, then we'll gladly take submissions for replacement rigs {images[0]}")
+    await ctx.respond(f"Thank you for your feedback, but rigs are made and maintained by the community. If you don't like how the rigs are, then we'll gladly take submissions for replacement rigs")
 
 @client.slash_command(name="contribute_to_mcprep", guilds=[MCPREP_GUILD_ID])
 async def contribute_to_mcprep(ctx: commands.Context):
