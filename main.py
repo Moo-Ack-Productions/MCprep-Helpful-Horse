@@ -40,6 +40,13 @@ class MyClient(discord.Bot):
         elif message.channel.id == IDLE_MINER_CHANNEL_ID:
             return
         
+        helper_role = discord.utils.get(748895907805790209)
+        helpers = helper_role.members
+
+        for h in helpers:
+            if h.mentioned_in(message):
+                message.channel.send(f"{message_author.mention}, please ping the Helpers role next time, not individual users")
+
         if HTTPS in message_content or HTTP in message_content:
             for i in DISCORD_HTTPS:
                 if i in message_content:
