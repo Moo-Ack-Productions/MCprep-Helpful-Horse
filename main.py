@@ -41,7 +41,7 @@ class MyClient(discord.Bot):
         elif message.channel.id == IDLE_MINER_CHANNEL_ID:
             return
         
-        helper_role = await discord.utils.get(748895907805790209)
+        helper_role = await message.guild.get_role(748895907805790209)
         helpers = helper_role.members
         
         if message.channel.id == HELP_CHANNEL:
