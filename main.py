@@ -6,6 +6,7 @@ import re
 
 MCPREP_GUILD_ID       = 737871405349339232
 IDLE_MINER_CHANNEL_ID = 746745594458144809
+HELP_CHANNEL          = 737872746700079235
 STAFF_CHAT_ID         = 741151005688987769
 
 HTTPS = "https://"
@@ -42,10 +43,11 @@ class MyClient(discord.Bot):
         
         helper_role = discord.utils.get(748895907805790209)
         helpers = helper_role.members
-
-        for h in helpers:
-            if h.mentioned_in(message):
-                message.channel.send(f"{message_author.mention}, please ping the Helpers role next time, not individual users")
+        
+        if message.channel.id == HELP_CHANNEL:
+            for h in helpers:
+                if h.mentioned_in(message):
+                    message.channel.send(f"{message_author.mention}, please ping the Helpers role next time, not individual users")
 
         if HTTPS in message_content or HTTP in message_content:
             for i in DISCORD_HTTPS:
