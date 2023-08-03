@@ -25,6 +25,7 @@ class MyClient(discord.Bot):
         # intents
         intents = discord.Intents.default()
         intents.message_content = True
+        intents.members = True
         discord.Bot.__init__(self, intents=intents)
         
         self.staff_chat = self.get_channel(STAFF_CHAT_ID)
@@ -47,7 +48,7 @@ class MyClient(discord.Bot):
         if message.channel.id == HELP_CHANNEL:
             for h in helpers:
                 if h.mentioned_in(message):
-                    message.channel.send(f"{message_author.mention}, please ping the Helpers role next time, not individual users")
+                    await message.channel.send(f"{message_author.mention}, please ping the Helpers role next time, not individual users")
 
         if HTTPS in message_content or HTTP in message_content:
             for i in DISCORD_HTTPS:
@@ -198,6 +199,12 @@ async def bforartists(ctx: commands.Context):
 @client.slash_command(name="watch_a_tutorial", guilds=[MCPREP_GUILD_ID])
 async def watch_a_tutorial(ctx: commands.Context):
     await ctx.respond("Learning the basics of Blender is important to get the most out of the software. While we can't teach you everything here, we recommend checking out some tutorials to help you get started. Judo has some great ones that cover the basics: https://www.youtube.com/playlist?list=PLkN2rUqk0BtWVTVZomXYdJPrMnooovMKy. These tutorials were made with an earlier version of Blender, but they still apply to the current version. Good luck!")
+
+@client.slash_command(name="outlines", guilds=[MCPREP_GUILD_ID])
+async def outlines(ctx: commands.Context):
+    await ctx.respond("""There are a couple of ways, including:
+- Photoshop/GIMP (most common for single renders)\n 
+- Some bevel node sorcery (though the bevel node is Cycles only)""")
    
 @client.slash_command(name="no_numerical_ratings", guilds=[MCPREP_GUILD_ID])
 async def no_numerical_ratings(ctx: commands.Context):
