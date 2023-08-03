@@ -28,7 +28,7 @@ docker build -t mcprep-helpful-horse-docker .
 docker run -d --restart unless-stopped --name mcprep-helpful-horse mcprep-helpful-horse-docker
 ```
 
-### Manually (with a touch of systemd at the end, if you're a Linux user)
+### Manually
 4. Install Pycord:
 ```bash
 # NOTE: Python 3.8 and above is needed
@@ -44,7 +44,7 @@ py -3 -m pip install -U py-cord
 python3 main.py
 ```
 
-6 (OPTIONAL). Using systemd to run the bot (Requires Linux):
+6 (OPTIONAL). Using systemd to run the bot (Requires a Linux distro with systemd as the init system):
 
 Run:
 ```bash
