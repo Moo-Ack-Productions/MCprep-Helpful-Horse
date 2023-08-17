@@ -45,7 +45,7 @@ class MyClient(discord.Bot):
         helper_role = message.guild.get_role(748895907805790209)
         helpers = helper_role.members
         
-        if message.channel.id == HELP_CHANNEL:
+        if message.channel.id == HELP_CHANNEL and helper_role not in message.role_mentions:
             for h in helpers:
                 if h.mentioned_in(message):
                     await message.channel.send(f"{message_author.mention}, please ping the Helpers role next time, not individual users")
