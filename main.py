@@ -21,6 +21,7 @@ class MyClient(discord.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.token = None
+        self.spam_text = []
         
         # intents
         intents = discord.Intents.default()
