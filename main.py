@@ -9,9 +9,6 @@ IDLE_MINER_CHANNEL_ID = 746745594458144809
 HELP_CHANNEL          = 737872746700079235
 STAFF_CHAT_ID         = 741151005688987769
 
-HTTPS = "https://"
-HTTP  = "http://"
-
 DISCORD_HTTPS = ("https://discord.com/", "https://cdn.discordapp.com/", "https://canary.discord.com/")
 
 def findWholeWord(w):
@@ -25,8 +22,6 @@ class MyClient(discord.Bot):
         
         # intents
         intents = discord.Intents.default()
-        intents.message_content = True
-        intents.members = True
         discord.Bot.__init__(self, intents=intents)
         
         self.staff_chat = self.get_channel(STAFF_CHAT_ID)
@@ -50,39 +45,19 @@ class MyClient(discord.Bot):
             for h in helpers:
                 if h.mentioned_in(message):
                     await message.channel.send(f"{message_author.mention}, please ping the Helpers role next time, not individual users")
-
-        if HTTPS in message_content or HTTP in message_content:
-            for i in DISCORD_HTTPS:
-                if i in message_content:
-                    return
-            if findWholeWord("free")(message_content) and findWholeWord("nitro")(message_content):
-                try:
-                    await message.delete()
-                except Exception as e:
-                    print(e)
-                await message.channel.send(f"{message_author.mention}, for the safety of everyone here, I will mute you. Free nitro links are not allowed as 99% of the time they're scams")
-                await message_author.timeout_for(duration=datetime.timedelta(hours=5), reason="Sending a free nitro link")
-                await self.staff_chat.send(f"{message_author} sent this message \"{message_content}\"")
-                return
-            self.spam_text.append((message_author, message_content)) # append the author and message
-        
 client = MyClient()
 
 @client.slash_command(name="mcprep_download", guilds=[MCPREP_GUILD_ID])
 async def mcprep_download(ctx: commands.Context):
     await ctx.respond("MCprep can be downloaded here: https://github.com/TheDuckCow/MCprep/releases")
 
-@client.slash_command(name="mcprep_kaion", guilds=[MCPREP_GUILD_ID])
-async def mcprep_kaion(ctx: commands.Context):
-    await ctx.respond("MCprep Kaion is a fork of MCprep created by <@668304274580701202> with the goal of at least one update per month (though often times there's more than one update).\n\nKaion is only recommended for users that understand how to do proper bug reports and are willing to sacrifice a bit of stability for new features\n\nIt can be found here: https://github.com/StandingPadAnimations/MCprep-Kaion")
-    
 @client.slash_command(name="blender_download", guilds=[MCPREP_GUILD_ID])
 async def blender_download(ctx: commands.Context):
     await ctx.respond("Blender can be downloaded here: https://www.blender.org/")
 
 @client.slash_command(name="my_hardware_sucks", guilds=[MCPREP_GUILD_ID])
 async def my_hardware_sucks(ctx: commands.Context):
-    await ctx.respond("Hardware does not matter in the beginning, whoever said that to you was lying.\n\nAll you need to get into 3D rendering is a computer, Blender, some time, and imagination.")
+    await ctx.respond("Hardware does not matter when starting out, whoever said that to you was lying.\n\nAll you need to get into 3D rendering is a computer, Blender, some time, and imagination.")
 
 @client.slash_command(name="older_versions", guilds=[MCPREP_GUILD_ID])
 async def older_versions(ctx: commands.Context):
@@ -169,7 +144,7 @@ async def contribute_to_mcprep(ctx: commands.Context):
     
 @client.slash_command(name="optifine_shaders_in_blender", guilds=[MCPREP_GUILD_ID])
 async def optifine_shaders_in_blender(ctx: commands.Context):
-    await ctx.respond("Optifine shaders aren't compatible with Blender, but you can create custom materials and use Blender's built-in lighting system to achieve similar lighting effects.")
+    await ctx.respond("Optifine shaders aren't compatible with Blender, but you can create custom materials and use Blender's built-in lighting system to achieve similar effects.")
 
 @client.slash_command(name="shaders", guilds=[MCPREP_GUILD_ID])
 async def shaders(ctx: commands.Context):
@@ -195,11 +170,11 @@ async def blender_27x(ctx: commands.Context):
 
 @client.slash_command(name="bforartists", guilds=[MCPREP_GUILD_ID])
 async def bforartists(ctx: commands.Context):
-    await ctx.respond("Bforartists is a fork of Blender that focuses on GUI enhancements. It's based of the alpha version of Blender, so there may be some issues related to compatability, but you can ask <@668304274580701202> who uses it as his daily driver")
+    await ctx.respond("Bforartists is a fork of Blender that focuses on GUI enhancements. It's based of the alpha releases of Blender, and as such may cause compatibility issues.")
 
-@client.slash_command(name="watch_a_tutorial", guilds=[MCPREP_GUILD_ID])
-async def watch_a_tutorial(ctx: commands.Context):
-    await ctx.respond("Learning the basics of Blender is important to get the most out of the software. While we can't teach you everything here, we recommend checking out some tutorials to help you get started. Judo has some great ones that cover the basics: https://www.youtube.com/playlist?list=PLkN2rUqk0BtWVTVZomXYdJPrMnooovMKy. These tutorials were made with an earlier version of Blender, but they still apply to the current version. Good luck!")
+#@client.slash_command(name="watch_a_tutorial", guilds=[MCPREP_GUILD_ID])
+#async def watch_a_tutorial(ctx: commands.Context):
+#    await ctx.respond("Learning the basics of Blender is important to get the most out of the software. While we can't teach you everything here, we recommend checking out some tutorials to help you get started. Judo has some great ones that cover the basics: https://www.youtube.com/playlist?list=PLkN2rUqk0BtWVTVZomXYdJPrMnooovMKy. These tutorials were made with an earlier version of Blender, but they still apply to the current version. Good luck!")
 
 @client.slash_command(name="outlines", guilds=[MCPREP_GUILD_ID])
 async def outlines(ctx: commands.Context):
